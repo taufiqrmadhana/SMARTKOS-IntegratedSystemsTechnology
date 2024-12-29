@@ -1,0 +1,11 @@
+#! /bin/sh
+#
+# Created by configure
+
+CPPFLAGS='-I/opt/homebrew/opt/icu4c@76/include' \
+LDFLAGS='-L/opt/homebrew/opt/icu4c@76/lib' \
+'./configure' \
+'--with-php-config=/Applications/XAMPP/xamppfiles/bin/php-config' \
+'--with-icu-dir=/opt/homebrew/opt/icu4c@76' \
+'PKG_CONFIG_PATH=/opt/homebrew/opt/icu4c@76/lib/pkgconfig' \
+"$@"
