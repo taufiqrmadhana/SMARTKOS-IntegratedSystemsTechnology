@@ -20,22 +20,26 @@ $routes->setAutoRoute(true);
 
 // API No. 1: Pelaporan Masalah Kos
 $routes->group('report', ['namespace' => 'App\Controllers'], function($routes) {
-    $routes->post('report/create', 'ReportController::create');
-    $routes->put('report/updateStatus/(:num)', 'ReportController::updateStatus/$1');
-    $routes->get('report', 'ReportController::index');
-    $routes->get('report/status/(:any)', 'ReportController::getByStatus/$1');
-    $routes->get('report/stats', 'ReportController::stats');
-    $routes->delete('report/delete/(:num)', 'ReportController::deleteReport/$1');
-    $routes->post('auth/register', 'AuthController::register');
-    $routes->post('auth/login', 'AuthController::login');
+    $routes->post('create', 'ReportController::create'); // POST /report/create
+    $routes->put('update-status/(:num)', 'ReportController::updateStatus/$1'); // PUT /report/update-status/{id}
+    $routes->get('/', 'ReportController::index'); // GET /report/
+    $routes->get('status/(:any)', 'ReportController::getByStatus/$1'); // GET /report/status/{status}
+    $routes->get('stats', 'ReportController::stats'); // GET /report/stats
+    $routes->delete('delete/(:num)', 'ReportController::deleteReport/$1'); // DELETE /report/delete/{id}
 });
 
 // API No. 2: Jadwal Perawatan Fasilitas
 $routes->group('maintenance', ['namespace' => 'App\Controllers'], function($routes) {
-    $routes->post('create', 'MaintenanceController::create');
-    $routes->get('/', 'MaintenanceController::index');
-    $routes->put('update/(:num)', 'MaintenanceController::update/$1');
-    $routes->get('filter', 'MaintenanceController::filter');
-    $routes->get('stats', 'MaintenanceController::stats');
-    $routes->delete('delete/(:num)', 'MaintenanceController::delete/$1');
+    $routes->post('create', 'MaintenanceController::create'); // POST /maintenance/create
+    $routes->get('/', 'MaintenanceController::index'); // GET /maintenance/
+    $routes->put('update/(:num)', 'MaintenanceController::update/$1'); // PUT /maintenance/update/{id}
+    $routes->get('filter', 'MaintenanceController::filter'); // GET /maintenance/filter
+    $routes->get('stats', 'MaintenanceController::stats'); // GET /maintenance/stats
+    $routes->delete('delete/(:num)', 'MaintenanceController::delete/$1'); // DELETE /maintenance/delete/{id}
+});
+
+// API No. 3: Autentikasi
+$routes->group('auth', ['namespace' => 'App\Controllers'], function($routes) {
+    $routes->post('register', 'AuthController::register'); // POST /auth/register
+    $routes->post('login', 'AuthController::login'); // POST /auth/login
 });
