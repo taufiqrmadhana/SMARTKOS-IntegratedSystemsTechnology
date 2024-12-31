@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.card h2 {
+    margin-bottom: 15px;
+    color: #007BFF;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, select, textarea, button {
+    width: calc(100% - 20px); /* Memberikan ruang di kiri dan kanan */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+}
+
+textarea {
+    resize: vertical; /* Izinkan resize hanya secara vertikal */
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.report-list div {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+.stats p {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.separator {
+    height: 2px;
+    background: #007BFF;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.delete-button {
+    background-color: #FF4136; /* Warna merah cerah */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px; /* Membuat sudut membulat */
+    cursor: pointer;
+    display: block;
+    width: 100%; /* Sesuaikan ukuran tombol */
+    margin-top: 10px;
+}
+
+.delete-button:hover {
+    background-color: #C0392B; /* Warna lebih gelap saat hover */
+}
