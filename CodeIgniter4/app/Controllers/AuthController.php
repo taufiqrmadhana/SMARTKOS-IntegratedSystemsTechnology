@@ -18,7 +18,6 @@ class AuthController extends ResourceController
             'password' => 'required|min_length[6]',
         ];
     
-        // Validasi data
         if (!$this->validate($rules)) {
             return $this->failValidationErrors($this->validator->getErrors());
         }
