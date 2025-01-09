@@ -40,9 +40,6 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
             </div>
             <button type="submit" class="btn btn-primary w-100">Login</button>
-            <p class="text-center mt-3">
-                Don't have an account? <a href="/register">Register</a>
-            </p>
         </form>
     </div>
 
@@ -58,7 +55,7 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '<?= csrf_hash(); ?>' // Tambahkan CSRF token jika diperlukan
+                        'X-CSRF-TOKEN': '<?= csrf_hash(); ?>'
                     },
                     body: JSON.stringify(data)
                 });
@@ -66,11 +63,9 @@
                 const result = await response.json();
 
                 if (response.ok) {
-                    // Redirect or show success
-                    window.location.href = '/dashboard'; // Ganti dengan halaman setelah login
+                    window.location.href = result.redirect; // Redirect jika sukses
                 } else {
-                    // Show error message
-                    document.getElementById('error-message').textContent = result.message || 'Login failed!';
+                    document.getElementById('error-message').textContent = result.error || 'Login failed!';
                     document.getElementById('error-message').classList.remove('d-none');
                 }
             } catch (error) {

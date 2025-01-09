@@ -11,58 +11,60 @@ class AuthController extends ResourceController
 
     public function register()
     {
-        $data = $this->request->getJSON(true); // Ambil data JSON dari request
-    
+        $data = $this->request->getJSON(true);
+
         $rules = [
             'username' => 'required|is_unique[users.username]',
             'password' => 'required|min_length[6]',
         ];
-    
+
         if (!$this->validate($rules)) {
             return $this->failValidationErrors($this->validator->getErrors());
         }
-    
-        // Periksa apakah username dan password diterima
-        if (empty($data['username']) || empty($data['password'])) {
-            return $this->failValidationErrors(['error' => 'Username and password are required.']);
-        }
-    
+
         $user = [
             'username' => $data['username'],
             'password' => password_hash($data['password'], PASSWORD_BCRYPT),
         ];
-    
+
         if ($this->model->insert($user)) {
             return $this->respondCreated(['message' => 'User registered successfully.']);
-        } else {
-            return $this->failServerError('Failed to register user.');
         }
+
+        return $this->failServerError('Failed to register user.');
     }
-    
 
     public function login()
     {
-        $data = $this->request->getJSON(true); // Ambil data JSON dari request
-    
-        // Periksa apakah username dan password ada
+        $data = $this->request->getJSON(true);
+
         if (empty($data['username']) || empty($data['password'])) {
             return $this->failValidationErrors(['error' => 'Username and password are required.']);
         }
-    
-        // Cari user berdasarkan username
+
         $user = $this->model->where('username', $data['username'])->first();
-    
-        // Periksa apakah username ditemukan dan password cocok
+
         if (!$user || !password_verify($data['password'], $user['password'])) {
             return $this->failUnauthorized('Invalid username or password.');
         }
-    
-        // Buat token dummy (gunakan JWT untuk implementasi nyata)
-        $token = base64_encode(random_bytes(32));
-    
+
+        $session = session();
+        $session->set('isLoggedIn', true);
+        $session->set('userId', $user['id']);
+
         return $this->respond([
             'message' => 'Login successful.',
-            'token' => $token
+            'redirect' => '/dashboard', // Tambahkan redirect tujuan
         ]);
-    }    
+    }
+    public function logout()
+    {
+        $session = session();
+        $session->destroy(); // Hancurkan session
+        return $this->respond([
+            'message' => 'Logout successful.',
+            'redirect' => '/login'
+        ]);
+    }
+
 }

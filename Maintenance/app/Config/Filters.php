@@ -40,13 +40,14 @@ class Filters extends BaseFilters
         ],
     ];
 
-    public $globals = [
+    public array $globals = [
         'before' => [
             'cors' => ['except' => ['api/*']]
-        ]
+        ],
+        'after' => []
     ];
-    
-    public $cors = [
+
+    public array $cors = [
         'allowedOrigins' => ['http://127.0.0.1:3000'], // Allow your frontend's origin
         'allowedHeaders' => ['Content-Type', 'Authorization'],
         'allowedMethods' => ['GET', 'POST', 'PUT', 'DELETE'],

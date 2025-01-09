@@ -12,13 +12,13 @@
       margin: 0;
       padding: 0;
       font-family: 'Roboto', sans-serif;
-      background-color: #eef2f3; /* Light background for variety */
+      background-color: #f4f7f6;
       color: #333;
       display: flex;
       flex-direction: column;
     }
     header {
-      background: linear-gradient(45deg, #343a40, #495057);
+      background: #343a40;
     }
     .navbar {
       padding: 0.5rem 1rem;
@@ -61,18 +61,17 @@
     .card {
       border: none;
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       background-color: #fff;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       margin-bottom: 1rem;
-      color: #333;
     }
     .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     .card-header {
-      background: #007bff;  /* Brighter header for cards */
+      background: #007bff;
       color: #fff;
       border-bottom: none;
       border-radius: 8px 8px 0 0;
@@ -86,7 +85,6 @@
       border-bottom: 1px solid #eaeaea;
       padding: 0.75rem 1rem;
       background-color: #fff;
-      color: #333;
     }
     .list-group-item:last-child {
       border-bottom: none;
@@ -101,7 +99,6 @@
       box-shadow: none;
       border-color: #007bff;
     }
-    /* Pastikan teks form update terlihat */
     .modal-body .form-control {
       color: #333;
     }
@@ -142,6 +139,33 @@
         font-size: 0.75rem;
       }
     }
+    /* Styling untuk Maintenance Reports */
+    .report-item {
+      border-bottom: 1px solid #eaeaea;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+    }
+    .report-item:last-child {
+      border-bottom: none;
+    }
+    .report-item h6 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .report-item p {
+      margin: 0.25rem 0;
+    }
+    .badge-status {
+      font-size: 0.9rem;
+      padding: 0.35em 0.65em;
+      color: #fff;
+    }
+    /* Toast container */
+    #toast-container {
+      z-index: 11;
+    }
   </style>
 </head>
 <body>
@@ -167,7 +191,7 @@
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
           <div class="card-header">
-            <h5 class="mb-0">Submit Maintenance Request</h5>
+            <h5 class="mb-0">Maintenance Schedulling</h5>
           </div>
           <div class="card-body">
             <form id="submit-form">
@@ -205,7 +229,7 @@
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
           <div class="card-header">
-            <h5 class="mb-0">Maintenance Reports</h5>
+            <h5 class="mb-0">Maintenance Schedules</h5>
           </div>
           <ul id="reports-list" class="list-group list-group-flush"></ul>
         </div>
@@ -230,7 +254,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Update Maintenance Request</h5>
+          <h5 class="modal-title">Update Maintenance Schedule</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -272,6 +296,9 @@
     <p>&copy; 2025 SmartKos. All rights reserved.</p>
   </footer>
 
+  <!-- Toast Container -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true" class="position-fixed bottom-0 end-0 p-3"></div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     const baseUrl = "https://blue-alpaca-681720.hostingersite.com";
@@ -280,6 +307,40 @@
       fetchReports();
       fetchStats();
     });
+
+    function showToast(message, type = 'success') {
+      const toastContainer = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.setAttribute('role', 'alert');
+      toast.setAttribute('aria-live', 'assertive');
+      toast.setAttribute('aria-atomic', 'true');
+      toast.dataset.bsDelay = 5000;
+      
+      let headerBg = 'bg-success';
+      if (type === 'error') headerBg = 'bg-danger';
+      else if (type === 'info') headerBg = 'bg-info';
+      else if (type === 'warning') headerBg = 'bg-warning';
+      
+      toast.innerHTML = `
+        <div class="toast-header ${headerBg} text-white">
+          <strong class="me-auto">Notification</strong>
+          <small>Just now</small>
+          <button type="button" class="btn-close btn-close-white ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          ${message}
+        </div>
+      `;
+      
+      toastContainer.appendChild(toast);
+      const bsToast = new bootstrap.Toast(toast);
+      bsToast.show();
+      
+      toast.addEventListener('hidden.bs.toast', () => {
+        toast.remove();
+      });
+    }
 
     async function fetchReports() {
       try {
@@ -295,17 +356,44 @@
         }
 
         data.forEach((report) => {
+          let statusClass = 'bg-secondary';
+          switch(report.status.toLowerCase()) {
+            case 'pending':
+              statusClass = 'bg-warning';
+              break;
+            case 'scheduled':
+              statusClass = 'bg-info';
+              break;
+            case 'completed':
+              statusClass = 'bg-success';
+              break;
+          }
+
           const li = document.createElement("li");
-          li.className = "list-group-item d-flex justify-content-between align-items-start";
+          li.className = "list-group-item report-item";
+
           li.innerHTML = `
             <div>
-              <strong>${sanitizeHTML(report.maintenance_type)}</strong> 
-              <small>(${sanitizeHTML(report.scheduled_date)})</small><br />
-              <span>${sanitizeHTML(report.description)}</span>
+              <h6>
+                <strong>${sanitizeHTML(report.maintenance_type)}</strong>
+                <span class="badge badge-status ${statusClass}">${sanitizeHTML(report.status)}</span>
+              </h6>
+              <p><strong>Facility:</strong> ${sanitizeHTML(report.facility)}</p>
+              <p><strong>Scheduled:</strong> ${sanitizeHTML(report.scheduled_date)}</p>
+              <p><strong>Description:</strong> ${sanitizeHTML(report.description)}</p>
             </div>
-            <div>
-              <button class="btn btn-sm btn-dark me-1" onclick="openUpdateModal(${report.id}, '${sanitizeAttribute(report.maintenance_type)}', '${sanitizeAttribute(report.facility)}', '${sanitizeAttribute(report.scheduled_date)}', '${sanitizeAttribute(report.description)}', '${sanitizeAttribute(report.status)}')">Edit</button>
-              <button class="btn btn-sm btn-outline-dark" onclick="deleteReport(${report.id})">Delete</button>
+            <div class="mt-2">
+              <button class="btn btn-sm btn-dark me-1" onclick="openUpdateModal(${report.id}, 
+                '${sanitizeAttribute(report.maintenance_type)}', 
+                '${sanitizeAttribute(report.facility)}', 
+                '${sanitizeAttribute(report.scheduled_date)}', 
+                '${sanitizeAttribute(report.description)}', 
+                '${sanitizeAttribute(report.status)}')">
+                Edit
+              </button>
+              <button class="btn btn-sm btn-outline-dark" onclick="deleteReport(${report.id})">
+                Delete
+              </button>
             </div>
           `;
           reportsList.appendChild(li);
@@ -354,16 +442,17 @@
         });
 
         if (response.ok) {
+          showToast("Maintenance request submitted successfully!", "success");
           fetchReports();
           fetchStats();
           e.target.reset();
         } else {
           const errorData = await response.json();
-          alert(`Error: ${errorData.message || 'Failed to submit maintenance request.'}`);
+          showToast(`Error: ${errorData.message || 'Failed to submit maintenance request.'}`, "error");
         }
       } catch (error) {
         console.error('Error submitting form:', error);
-        alert('An error occurred while submitting the form.');
+        showToast('An error occurred while submitting the form.', "error");
       }
     });
 
@@ -398,17 +487,18 @@
         });
 
         if (response.ok) {
+          showToast("Maintenance request updated successfully!", "success");
           fetchReports();
           fetchStats();
           const modal = bootstrap.Modal.getInstance(document.getElementById("updateModal"));
           modal.hide();
         } else {
           const errorData = await response.json();
-          alert(`Error: ${errorData.message || 'Failed to update maintenance request.'}`);
+          showToast(`Error: ${errorData.message || 'Failed to update maintenance request.'}`, "error");
         }
       } catch (error) {
         console.error('Error updating form:', error);
-        alert('An error occurred while updating the form.');
+        showToast('An error occurred while updating the form.', "error");
       }
     });
 
@@ -418,20 +508,37 @@
       try {
         const response = await fetch(`${baseUrl}/maintenance/delete/${id}`, { method: "DELETE" });
         if (response.ok) {
+          showToast("Maintenance report deleted successfully!", "success");
           fetchReports();
           fetchStats();
         } else {
           const errorData = await response.json();
-          alert(`Error: ${errorData.message || 'Failed to delete maintenance report.'}`);
+          showToast(`Error: ${errorData.message || 'Failed to delete maintenance report.'}`, "error");
         }
       } catch (error) {
         console.error('Error deleting report:', error);
-        alert('An error occurred while deleting the report.');
+        showToast('An error occurred while deleting the report.', "error");
       }
     }
 
     function logout() {
-      window.location.href = "/login";
+      fetch(`${baseUrl}/auth/logout`, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" }
+      })
+        .then(response => response.json())
+        .then(result => {
+          if (result.redirect) {
+            showToast("Logout successful!", "info");
+            setTimeout(() => {
+              window.location.href = result.redirect; // Redirect setelah logout
+            }, 1500);
+          }
+        })
+        .catch(error => {
+          console.error('Error during logout:', error);
+          showToast('An error occurred during logout.', "error");
+        });
     }
 
     function sanitizeHTML(str) {
