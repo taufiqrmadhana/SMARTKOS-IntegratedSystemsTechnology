@@ -1,0 +1,309 @@
+CRITICAL - 2024-11-18 01:22:42 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "customercustom/index.php"
+[Method: GET, Route: customercustom]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('customercustom/index.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom/index', [], true)
+ 3 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom/index', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:23:42 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 25.
+ 1 APPPATH/Views/customercustom.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 25)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:23:43 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 25.
+ 1 APPPATH/Views/customercustom.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 25)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:23:43 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 25.
+ 1 APPPATH/Views/customercustom.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 25)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:24:50 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 25.
+ 1 APPPATH/Views/customercustom.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 25)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:24:51 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 25.
+ 1 APPPATH/Views/customercustom.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 25)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:24:51 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 25.
+ 1 APPPATH/Views/customercustom.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 25)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:24:52 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 25.
+ 1 APPPATH/Views/customercustom.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 25)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:24:52 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 25.
+ 1 APPPATH/Views/customercustom.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 25)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:24:52 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 25.
+ 1 APPPATH/Views/customercustom.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 25)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:24:52 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 25.
+ 1 APPPATH/Views/customercustom.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 25)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:24:52 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 25.
+ 1 APPPATH/Views/customercustom.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 25)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:24:53 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 25.
+ 1 APPPATH/Views/customercustom.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 25)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:24:53 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 25.
+ 1 APPPATH/Views/customercustom.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 25)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:24:53 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 25.
+ 1 APPPATH/Views/customercustom.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 25)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:24:53 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 25.
+ 1 APPPATH/Views/customercustom.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 25)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:25:05 --> ErrorException: Undefined array key "email"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 29.
+ 1 APPPATH/Views/customercustom.php(29): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 29)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:25:06 --> ErrorException: Undefined array key "email"
+[Method: GET, Route: customercustom]
+in APPPATH/Views/customercustom.php on line 29.
+ 1 APPPATH/Views/customercustom.php(29): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php', 29)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/customercustom.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(19): view('customercustom', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:26:28 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "customercustom/search.php"
+[Method: GET, Route: customercustom/search]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('customercustom/search.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom/search', [], true)
+ 3 APPPATH/Controllers/CustomerCustomController.php(26): view('customercustom/search', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->search()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:29:18 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "customercustom/search.php"
+[Method: GET, Route: search]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('customercustom/search.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('customercustom/search', [], true)
+ 3 APPPATH/Controllers/CustomerCustomController.php(26): view('customercustom/search', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->search()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')
+CRITICAL - 2024-11-18 01:30:19 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: search]
+in APPPATH/Views/search.php on line 23.
+ 1 APPPATH/Views/search.php(23): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/search.php', 23)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/taufi/Documents/GitHub/CodeIgniter4/app/Views/search.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('search', [], true)
+ 5 APPPATH/Controllers/CustomerCustomController.php(26): view('search', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CustomerCustomController->search()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomerCustomController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/taufi/Documents/GitHub/CodeIgniter4/public/index.php')

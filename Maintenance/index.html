@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>API Testing Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .tab {
+            display: none;
+        }
+        .tab.active {
+            display: block;
+        }
+        .tabs {
+            margin-bottom: 20px;
+        }
+        .tabs button {
+            padding: 10px 20px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        form {
+            margin-bottom: 30px;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+        form h3 {
+            margin-top: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        table, th, td {
+            border: 1px solid #aaa;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        .response {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>API Testing Interface</h1>
+
+    <div class="tabs">
+        <button onclick="showTab('report')">Pelaporan Masalah Kos</button>
+        <button onclick="showTab('maintenance')">Jadwal Perawatan Fasilitas</button>
+    </div>
+
+    <!-- Pelaporan Masalah Kos Tab -->
+    <div id="report" class="tab active">
+        <h2>Pelaporan Masalah Kos</h2>
+
+        <!-- Create Report Form -->
+        <form id="createReportForm">
+            <h3>Buat Laporan Baru</h3>
+            <label>
+                Jenis Masalah:
+                <input type="text" name="problem_type" required>
+            </label><br><br>
+            <label>
+                Deskripsi:
+                <textarea name="description" required></textarea>
+            </label><br><br>
+            <label>
+                Lokasi Kamar:
+                <input type="text" name="room_location" required>
+            </label><br><br>
+            <label>
+                Foto:
+                <input type="file" name="photo" accept="image/*" required>
+            </label><br><br>
+            <button type="submit">Submit Laporan</button>
+        </form>
+
+        <!-- Get All Reports -->
+        <button onclick="getAllReports()">Get All Reports</button>
+        <div id="allReports" class="response"></div>
+
+        <!-- Update Report Status -->
+        <form id="updateReportStatusForm">
+            <h3>Perbarui Status Laporan</h3>
+            <label>
+                ID Laporan:
+                <input type="number" name="id" required>
+            </label><br><br>
+            <label>
+                Status Baru:
+                <select name="status" required>
+                    <option value="">--Pilih Status--</option>
+                    <option value="pending">Pending</option>
+                    <option value="in_process">In Process</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </label><br><br>
+            <button type="submit">Update Status</button>
+        </form>
+
+        <!-- Filter Reports by Status -->
+        <h3>Filter Laporan Berdasarkan Status</h3>
+        <label>
+            Status:
+            <select id="filterReportStatus">
+                <option value="">--Pilih Status--</option>
+                <option value="pending">Pending</option>
+                <option value="in_process">In Process</option>
+                <option value="completed">Completed</option>
+            </select>
+            <button onclick="filterReports()">Filter</button>
+        </label>
+        <div id="filteredReports" class="response"></div>
+
+        <!-- Get Statistics -->
+        <button onclick="getReportStats()">Get Statistics</button>
+        <div id="reportStats" class="response"></div>
+
+        <!-- Delete Report -->
+        <form id="deleteReportForm">
+            <h3>Hapus Laporan</h3>
+            <label>
+                ID Laporan:
+                <input type="number" name="id" required>
+            </label><br><br>
+            <button type="submit">Delete Report</button>
+        </form>
+    </div>
+
+    <!-- Jadwal Perawatan Fasilitas Tab -->
+    <div id="maintenance" class="tab">
+        <h2>Jadwal Perawatan Fasilitas</h2>
+
+        <!-- Create Maintenance Schedule Form -->
+        <form id="createMaintenanceForm">
+            <h3>Buat Jadwal Perawatan Baru</h3>
+            <label>
+                Jenis Perawatan:
+                <input type="text" name="maintenance_type" required>
+            </label><br><br>
+            <label>
+                Deskripsi:
+                <textarea name="description" required></textarea>
+            </label><br><br>
+            <label>
+                Fasilitas:
+                <input type="text" name="facility" required>
+            </label><br><br>
+            <label>
+                Tanggal Dijadwalkan:
+                <input type="date" name="scheduled_date" required>
+            </label><br><br>
+            <label>
+                Status:
+                <select name="status" required>
+                    <option value="">--Pilih Status--</option>
+                    <option value="pending">Pending</option>
+                    <option value="scheduled">Scheduled</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </label><br><br>
+            <button type="submit">Submit Jadwal</button>
+        </form>
+
+        <!-- Get All Maintenance Schedules -->
+        <button onclick="getAllMaintenance()">Get All Maintenance Schedules</button>
+        <div id="allMaintenance" class="response"></div>
+
+        <!-- Update Maintenance Schedule -->
+        <form id="updateMaintenanceForm">
+            <h3>Perbarui Jadwal Perawatan</h3>
+            <label>
+                ID Jadwal:
+                <input type="number" name="id" required>
+            </label><br><br>
+            <label>
+                Jenis Perawatan:
+                <input type="text" name="maintenance_type" required>
+            </label><br><br>
+            <label>
+                Deskripsi:
+                <textarea name="description" required></textarea>
+            </label><br><br>
+            <label>
+                Fasilitas:
+                <input type="text" name="facility" required>
+            </label><br><br>
+            <label>
+                Tanggal Dijadwalkan:
+                <input type="date" name="scheduled_date" required>
+            </label><br><br>
+            <label>
+                Status:
+                <select name="status" required>
+                    <option value="">--Pilih Status--</option>
+                    <option value="pending">Pending</option>
+                    <option value="scheduled">Scheduled</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </label><br><br>
+            <button type="submit">Update Jadwal</button>
+        </form>
+
+        <!-- Filter Maintenance Schedules -->
+        <h3>Filter Jadwal Perawatan</h3>
+        <label>
+            Fasilitas:
+            <input type="text" id="filterFacility">
+        </label>
+        <label>
+            Tanggal Mulai:
+            <input type="date" id="filterStartDate">
+        </label>
+        <label>
+            Tanggal Akhir:
+            <input type="date" id="filterEndDate">
+        </label>
+        <button onclick="filterMaintenance()">Filter</button>
+        <div id="filteredMaintenance" class="response"></div>
+
+        <!-- Get Statistics -->
+        <button onclick="getMaintenanceStats()">Get Statistics</button>
+        <div id="maintenanceStats" class="response"></div>
+
+        <!-- Delete Maintenance Schedule -->
+        <form id="deleteMaintenanceForm">
+            <h3>Hapus Jadwal Perawatan</h3>
+            <label>
+                ID Jadwal:
+                <input type="number" name="id" required>
+            </label><br><br>
+            <button type="submit">Delete Maintenance Schedule</button>
+        </form>
+    </div>
+
+    <script>
+        // Toggle Tabs
+        function showTab(tabId) {
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Base URL
+        const baseURL = 'http://localhost:8080';
+
+        // -------------- API No.1: Pelaporan Masalah Kos --------------
+
+        // Handle Create Report
+        document.getElementById('createReportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            fetch(`${baseURL}/report/create`, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || 'Report created successfully.');
+                this.reset();
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        // Get All Reports
+        function getAllReports() {
+            fetch(`${baseURL}/report`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('allReports').textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Handle Update Report Status
+        document.getElementById('updateReportStatusForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const id = this.id.value;
+            const status = this.status.value;
+
+            fetch(`${baseURL}/report/updateStatus/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ status })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || 'Report status updated.');
+                this.reset();
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        // Filter Reports by Status
+        function filterReports() {
+            const status = document.getElementById('filterReportStatus').value;
+            if (!status) {
+                alert('Please select a status to filter.');
+                return;
+            }
+
+            fetch(`${baseURL}/report/status/${status}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('filteredReports').textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Get Report Statistics
+        function getReportStats() {
+            fetch(`${baseURL}/report/stats`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('reportStats').textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Handle Delete Report
+        document.getElementById('deleteReportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const id = this.id.value;
+
+            fetch(`${baseURL}/report/delete/${id}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || 'Report deleted successfully.');
+                this.reset();
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        // -------------- API No.2: Jadwal Perawatan Fasilitas --------------
+
+        // Handle Create Maintenance Schedule
+        document.getElementById('createMaintenanceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
+
+            fetch(`${baseURL}/maintenance/create`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || 'Maintenance schedule created successfully.');
+                this.reset();
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        // Get All Maintenance Schedules
+        function getAllMaintenance() {
+            fetch(`${baseURL}/maintenance`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('allMaintenance').textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Handle Update Maintenance Schedule
+        document.getElementById('updateMaintenanceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const id = this.id.value;
+            const maintenance_type = this.maintenance_type.value;
+            const description = this.description.value;
+            const facility = this.facility.value;
+            const scheduled_date = this.scheduled_date.value;
+            const status = this.status.value;
+
+            const data = {
+                maintenance_type,
+                description,
+                facility,
+                scheduled_date,
+                status
+            };
+
+            fetch(`${baseURL}/maintenance/update/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || 'Maintenance schedule updated.');
+                this.reset();
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        // Filter Maintenance Schedules
+        function filterMaintenance() {
+            const facility = document.getElementById('filterFacility').value;
+            const start_date = document.getElementById('filterStartDate').value;
+            const end_date = document.getElementById('filterEndDate').value;
+
+            let query = '?';
+            if (facility) {
+                query += `facility=${encodeURIComponent(facility)}&`;
+            }
+            if (start_date && end_date) {
+                query += `start_date=${start_date}&end_date=${end_date}&`;
+            }
+
+            fetch(`${baseURL}/maintenance/filter${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('filteredMaintenance').textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Get Maintenance Statistics
+        function getMaintenanceStats() {
+            fetch(`${baseURL}/maintenance/stats`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('maintenanceStats').textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Handle Delete Maintenance Schedule
+        document.getElementById('deleteMaintenanceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const id = this.id.value;
+
+            fetch(`${baseURL}/maintenance/delete/${id}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || 'Maintenance schedule deleted successfully.');
+                this.reset();
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+
+</body>
+</html>
