@@ -1,0 +1,22 @@
+# Ignore environment files
+.env
+*.env
+
+# Ignore config files that may contain sensitive information
+app/Config/Database.php
+
+# Ignore IDE and editor configuration files
+.idea/
+.vscode/
+
+# Ignore node_modules directory if you're using Node.js
+node_modules/
+
+# Ignore vendor directory if you're using Composer for PHP dependencies
+vendor/
+
+# Ignore build directories
+/build/
+
+# Ignore other sensitive files
+*.log
