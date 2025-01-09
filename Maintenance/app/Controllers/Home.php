@@ -19,8 +19,14 @@ class Home extends BaseController
         return view('login');
     }
 
-    public function dashboardView(): string
+    public function dashboardView()
     {
+        $session = session();
+        if (!$session->has('isLoggedIn') || !$session->get('isLoggedIn')) {
+            return redirect()->to('/login');
+        }
+    
+        // Lanjutkan dengan logika tampilan dashboard jika autentikasi berhasil
         return view('dashboard');
     }
 }

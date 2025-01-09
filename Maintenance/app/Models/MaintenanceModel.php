@@ -19,7 +19,6 @@ class MaintenanceModel extends Model
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';
 
-    // Validasi data sebelum disimpan
     protected $validationRules = [
         'maintenance_type' => 'required|string|max_length[255]',
         'description'      => 'required|string',
@@ -49,4 +48,35 @@ class MaintenanceModel extends Model
             'in_list' => 'Status perawatan harus berupa pending, scheduled, atau completed.'
         ]
     ];
+
+    /**
+     * Jadwalkan maintenance berdasarkan data.
+     *
+     * @param array $data
+     * @return bool|int
+     */
+    public function scheduleMaintenance(array $data)
+    {
+        if ($this->validate($data)) {
+            return $this->insert($data);
+        }
+
+        return false;
+    }
+
+    /**
+     * Update data maintenance berdasarkan ID.
+     *
+     * @param int $id
+     * @param array $data
+     * @return bool
+     */
+    public function updateMaintenance(int $id, array $data)
+    {
+        if ($this->validate($data)) {
+            return $this->update($id, $data);
+        }
+
+        return false;
+    }
 }

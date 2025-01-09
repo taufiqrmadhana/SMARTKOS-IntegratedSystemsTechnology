@@ -44,9 +44,6 @@
                 <input type="password" class="form-control" id="confirm_password" placeholder="Re-enter your password" required>
             </div>
             <button type="submit" class="btn btn-success w-100">Register</button>
-            <p class="text-center mt-3">
-                Already have an account? <a href="/login">Login</a>
-            </p>
         </form>
     </div>
 
@@ -68,7 +65,7 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '<?= csrf_hash(); ?>' // Tambahkan CSRF token jika diperlukan
+                        'X-CSRF-TOKEN': '<?= csrf_hash(); ?>'
                     },
                     body: JSON.stringify(data)
                 });
@@ -76,11 +73,9 @@
                 const result = await response.json();
 
                 if (response.ok) {
-                    // Redirect or show success
                     window.location.href = '/login'; // Redirect ke halaman login setelah sukses
                 } else {
-                    // Show error message
-                    document.getElementById('error-message').textContent = result.message || 'Registration failed!';
+                    document.getElementById('error-message').textContent = result.error || 'Registration failed!';
                     document.getElementById('error-message').classList.remove('d-none');
                 }
             } catch (error) {

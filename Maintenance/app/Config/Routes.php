@@ -18,20 +18,37 @@ $routes->setAutoRoute(true);
  * --------------------------------------------------------------------
  */
 
-$routes->get('/register','Home::registerView');
-$routes->get('/login','Home::loginView');
-$routes->get('/dashboard','Home::dashboardView');
+// Rute untuk halaman login dan register
+$routes->get('/register', 'Home::registerView');
+$routes->get('/login', 'Home::loginView');
 
-$routes->group('maintenance', ['namespace' => 'App\Controllers'], function($routes) {
-    $routes->post('create', 'MaintenanceController::create'); // POST /maintenance/create
-    $routes->get('/', 'MaintenanceController::index'); // GET /maintenance/
+// Terapkan filter 'auth' untuk rute dashboard
+$routes->get('/dashboard', 'Home::dashboardView', ['filter' => 'auth']);
+
+// Rute untuk autentikasi
+$routes->group('auth', ['namespace' => 'App\Controllers'], function($routes) {
+    $routes->post('register', 'AuthController::register'); // POST /auth/register
+    $routes->post('login', 'AuthController::login');       // POST /auth/login
+    $routes->post('logout', 'AuthController::logout');     // POST /auth/logout
+});
+
+// Terapkan filter 'auth' untuk grup maintenance
+$routes->group('maintenance', [
+    'namespace' => 'App\Controllers',
+    'filter'    => 'auth'
+], function($routes) {
+    $routes->post('create', 'MaintenanceController::create');        // POST /maintenance/create
+    $routes->get('/', 'MaintenanceController::index');               // GET /maintenance/
     $routes->put('update/(:num)', 'MaintenanceController::update/$1'); // PUT /maintenance/update/{id}
-    $routes->get('filter', 'MaintenanceController::filter'); // GET /maintenance/filter
-    $routes->get('stats', 'MaintenanceController::stats'); // GET /maintenance/stats
+    $routes->get('filter', 'MaintenanceController::filter');         // GET /maintenance/filter
+    $routes->get('stats', 'MaintenanceController::stats');           // GET /maintenance/stats
     $routes->delete('delete/(:num)', 'MaintenanceController::delete/$1'); // DELETE /maintenance/delete/{id}
 });
 
-$routes->group('auth', ['namespace' => 'App\Controllers'], function($routes) {
-    $routes->post('register', 'AuthController::register'); // POST /auth/register
-    $routes->post('login', 'AuthController::login'); // POST /auth/login
+// Rute untuk laporan (reports)
+$routes->group('reports', ['namespace' => 'App\Controllers', 'filter' => 'auth'], function($routes) {
+    $routes->post('receive', 'ReportController::receiveReports');  // POST /reports/receive
+    $routes->get('schedules', 'ReportController::getSchedules');   // GET /reports/schedules
+    $routes->put('update/(:num)', 'ReportController::updateReport/$1'); // PUT /reports/update/{id}
 });
+
