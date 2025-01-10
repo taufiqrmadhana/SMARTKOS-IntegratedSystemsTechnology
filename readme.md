@@ -21,7 +21,7 @@ This repository contains two directories:
 ## Deployment URLs
 - **Maintenance Project**: `https://blue-alpaca-681720.hostingersite.com`
 - **Report Project (Partner's)**: `https://cornflowerblue-wolverine-266402.hostingersite.com`
-- **Integrated**: `https://darkgray-grouse-813694.hostingersite.com/\`
+- **Integrated**: `https://darkgray-grouse-813694.hostingersite.com`
 
 ---
 
