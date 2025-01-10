@@ -54,7 +54,11 @@ To run the projects locally:
    - Configure the `.env` file as needed for your local environment.
 
 5. **Run the Project**:
-   - Start your local server and navigate to the base URL in your browser.
+   - Start the development server:
+     ```bash
+     php spark serve
+     ```
+   - Open the link displayed in the terminal (e.g., `http://localhost:8000`).
 
 ---
 
@@ -79,8 +83,10 @@ The `Integrated` project does not define custom routes. Instead, it relies on di
 
 - **Report API**:
   - Base URL: `https://cornflowerblue-wolverine-266402.hostingersite.com/report`
-  - Endpoints:
-    - Endpoint details to be specified as required.
+  - Endpoints Used:
+    - **GET** `/report`: Retrieve all reports.
+    - **DELETE** `/report/delete/{id}`: Delete a specific report by ID.
+    - **GET** `/report/status/{status}`: Retrieve reports filtered by status.
 
 ---
 
