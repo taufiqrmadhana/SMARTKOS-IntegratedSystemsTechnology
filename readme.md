@@ -71,8 +71,8 @@ To run the projects locally:
 
 ## API Interaction (Integrated)
 The `Integrated` project does not define custom routes. Instead, it relies on direct calls to the following endpoints:
-- **Maintenance API**: 
-  - Base URL: `https://blue-alpaca-681720.hostingersite.com`
+- **Maintenance API Base URL**: 
+  - Base URL: `https://blue-alpaca-681720.hostingersite.com/`
   - Endpoints:
     - **POST** `/maintenance/create`: Create a new maintenance schedule.
     - **GET** `/maintenance/`: Retrieve all maintenance records.
@@ -81,8 +81,8 @@ The `Integrated` project does not define custom routes. Instead, it relies on di
     - **GET** `/maintenance/stats`: Retrieve maintenance statistics.
     - **DELETE** `/maintenance/delete/{id}`: Delete a maintenance record by ID.
 
-- **Report API**:
-  - Base URL: `https://cornflowerblue-wolverine-266402.hostingersite.com/report`
+- **Report API Base URL**:
+  - Base URL: `https://cornflowerblue-wolverine-266402.hostingersite.com/`
   - Endpoints Used:
     - **GET** `/report`: Retrieve all reports.
     - **DELETE** `/report/delete/{id}`: Delete a specific report by ID.
