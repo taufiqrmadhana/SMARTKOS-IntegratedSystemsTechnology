@@ -3,98 +3,61 @@
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
-use App\Models\MaintenanceModel;
 
 class ReportController extends ResourceController
 {
-    protected $maintenanceModel;
+    protected $modelName = 'App\Models\ReportModel'; // Menggunakan model laporan
+    protected $format    = 'json'; // Format respons adalah JSON
 
-    public function __construct()
+    public function index()
     {
-        $this->maintenanceModel = new MaintenanceModel();
+        // Mendapatkan semua laporan beserta username
+        $reports = $this->model->getReportsWithUsernames();
+        return $this->respond($reports);
     }
 
-    public function receiveReports()
+    public function getByStatus($status)
     {
-        $data = $this->request->getJSON(true); // Ambil data JSON dari request
-
-        if (empty($data)) {
-            return $this->failValidationErrors(['error' => 'Data laporan tidak boleh kosong.']);
+        // Mendapatkan laporan berdasarkan status
+        $reports = $this->model->getReportsByStatus($status);
+        if (!$reports) {
+            return $this->failNotFound("No reports found with status: $status");
         }
-
-        $response = [];
-
-        foreach ($data as $report) {
-            $report['status'] = 'pending'; // Set default status untuk laporan baru
-            $isScheduled = $this->maintenanceModel->scheduleMaintenance($report);
-
-            if ($isScheduled) {
-                $response[] = [
-                    'report' => $report,
-                    'message' => 'Maintenance berhasil dijadwalkan.',
-                    'id' => $isScheduled
-                ];
-            } else {
-                $response[] = [
-                    'report' => $report,
-                    'message' => 'Gagal menjadwalkan maintenance.',
-                    'errors' => $this->maintenanceModel->errors()
-                ];
-            }
-        }
-
-        return $this->respond([
-            'message' => 'Proses laporan selesai.',
-            'results' => $response
-        ]);
+        return $this->respond($reports);
     }
 
-    /**
-     * Dapatkan semua jadwal maintenance.
-     * @return \CodeIgniter\HTTP\ResponseInterface
-     */
-    public function getSchedules()
+    public function create()
     {
-        $schedules = $this->maintenanceModel->findAll();
+        // Validasi data masukan
+        $rules = [
+            'problem_type'  => 'required|string|max_length[255]',
+            'description'   => 'required|string',
+            'room_location' => 'required|string|max_length[255]',
+            'photo'         => 'permit_empty|string|max_length[255]',
+            'status'        => 'required|in_list[pending,scheduled,completed]',
+            'user_id'       => 'required|integer',
+        ];
 
-        return $this->respond($schedules);
+        if (!$this->validate($rules)) {
+            return $this->failValidationErrors($this->validator->getErrors());
+        }
+
+        // Simpan laporan
+        $data = $this->request->getPost();
+        $this->model->insert($data);
+
+        return $this->respondCreated(['message' => 'Report created successfully.']);
     }
 
-    /**
-     * Perbarui laporan berdasarkan ID.
-     * 
-     * @param int $id
-     * @return \CodeIgniter\HTTP\ResponseInterface
-     */
-    public function updateReport($id = null)
+    public function delete($id)
     {
-        // Pastikan ID diberikan
-        if (!$id) {
-            return $this->failNotFound('ID laporan tidak ditemukan.');
-        }
-
-        $data = $this->request->getJSON(true); // Ambil data JSON dari request
-
-        // Validasi data input
-        if (!$this->maintenanceModel->validate($data)) {
-            return $this->failValidationErrors($this->maintenanceModel->errors());
-        }
-
-        // Cari laporan berdasarkan ID
-        $report = $this->maintenanceModel->find($id);
+        // Hapus laporan berdasarkan ID
+        $report = $this->model->find($id);
         if (!$report) {
-            return $this->failNotFound('Laporan dengan ID tersebut tidak ditemukan.');
+            return $this->failNotFound("Report with ID $id not found.");
         }
 
-        // Perbarui laporan
-        $isUpdated = $this->maintenanceModel->update($id, $data);
-        if ($isUpdated) {
-            return $this->respond([
-                'message' => 'Laporan berhasil diperbarui.',
-                'data' => $this->maintenanceModel->find($id)
-            ]);
-        }
-
-        return $this->fail('Gagal memperbarui laporan.');
+        $this->model->delete($id);
+        return $this->respondDeleted(['message' => 'Report deleted successfully.']);
     }
 }

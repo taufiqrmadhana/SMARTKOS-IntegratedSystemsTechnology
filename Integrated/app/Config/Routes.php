@@ -46,9 +46,12 @@ $routes->group('maintenance', [
 });
 
 // Rute untuk laporan (reports)
-$routes->group('reports', ['namespace' => 'App\Controllers', 'filter' => 'auth'], function($routes) {
-    $routes->post('receive', 'ReportController::receiveReports');  // POST /reports/receive
-    $routes->get('schedules', 'ReportController::getSchedules');   // GET /reports/schedules
-    $routes->put('update/(:num)', 'ReportController::updateReport/$1'); // PUT /reports/update/{id}
+$routes->group('report', function ($routes) {
+    $routes->get('/', 'ReportController::index');              // Mendapatkan semua laporan
+    $routes->get('status/(:any)', 'ReportController::getByStatus/$1'); // Mendapatkan laporan berdasarkan status
+    $routes->post('create', 'ReportController::create');       // Membuat laporan baru
+    $routes->delete('delete/(:num)', 'ReportController::delete/$1'); // Menghapus laporan berdasarkan ID
 });
+
+
 

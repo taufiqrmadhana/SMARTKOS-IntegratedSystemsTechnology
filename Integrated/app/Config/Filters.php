@@ -42,7 +42,7 @@ class Filters extends BaseFilters
 
     public array $globals = [
         'before' => [
-            'cors' => ['except' => ['api/*']]
+            'cors'
         ],
         'after' => []
     ];

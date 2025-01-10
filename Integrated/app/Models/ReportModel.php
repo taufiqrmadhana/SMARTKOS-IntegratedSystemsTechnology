@@ -6,10 +6,10 @@ use CodeIgniter\Model;
 
 class ReportModel extends Model
 {
-    protected $table      = 'reports';
-    protected $primaryKey = 'id';
+    protected $table      = 'reports'; // Nama tabel di database
+    protected $primaryKey = 'id';      // Primary key
 
-    protected $useTimestamps = true;
+    protected $useTimestamps = true;   // Aktifkan kolom timestamp (created_at, updated_at)
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
 
@@ -19,13 +19,20 @@ class ReportModel extends Model
         'room_location',
         'photo',
         'status',
-        'user_id'
+        'user_id',
     ]; 
 
     public function getReportsWithUsernames()
     {
+        // Mengambil data laporan beserta username pengguna
         return $this->select('reports.*, users.username')
                     ->join('users', 'users.id = reports.user_id')
                     ->findAll();
+    }
+
+    public function getReportsByStatus($status)
+    {
+        // Mengambil laporan berdasarkan status
+        return $this->where('status', $status)->findAll();
     }
 }

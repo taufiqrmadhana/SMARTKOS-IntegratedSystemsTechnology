@@ -16,13 +16,13 @@ use CodeIgniter\Filters\SecureHeaders;
 class Filters extends BaseFilters
 {
     public array $aliases = [
+        'cors' => \Fluent\Cors\Filters\CorsFilter::class,
         'auth' => \App\Filters\AuthFilter::class,
         'csrf'          => CSRF::class,
         'toolbar'       => DebugToolbar::class,
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'cors'          => Cors::class,  // Alias untuk CORS
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
@@ -57,5 +57,9 @@ class Filters extends BaseFilters
 
     public array $methods = [];
 
-    public array $filters = [];
+    public array $filters = [
+        'cors' => [
+            'before' => ['api/*'], // Terapkan pada rute dengan prefix 'api/'
+        ],
+    ];
 }
