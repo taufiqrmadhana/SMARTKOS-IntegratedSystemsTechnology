@@ -5,8 +5,8 @@ This repository contains two directories:
 
 1. **Integrated**: 
    - Project `smartkos` that interacts with the APIs hosted at:
-     - Maintenance API: `https://blue-alpaca-681720.hostingersite.com`
-     - Report API: `https://cornflowerblue-wolverine-266402.hostingersite.com/report`
+     - Maintenance API Base URL: `https://blue-alpaca-681720.hostingersite.com`
+     - Report API Base URL: `https://cornflowerblue-wolverine-266402.hostingersite.com`
    - Interaction is handled purely via URL + endpoint, without the creation of routes. The project is developed using CodeIgniter 4.
    - **Deployed URL**: `https://darkgray-grouse-813694.hostingersite.com/`
 
